@@ -1,0 +1,22 @@
+services:
+  minio:
+    # RustFS provides an S3-compatible local endpoint because MinIO's public
+    # Quay image currently rejects anonymous pulls.
+    image: rustfs/rustfs:latest
+    command: /data
+    restart: unless-stopped
+    environment:
+      # Reuse the app credentials already configured for Spring in .env.
+      RUSTFS_ACCESS_KEY: ${MINIO_ACCESS_KEY:?Set MINIO_ACCESS_KEY in docker/.env}
+      RUSTFS_SECRET_KEY: ${MINIO_SECRET_KEY:?Set MINIO_SECRET_KEY in docker/.env}
+      RUSTFS_ADDRESS: ":9000"
+      RUSTFS_CONSOLE_ADDRESS: ":9001"
+      RUSTFS_CONSOLE_ENABLE: "true"
+    ports:
+      - "127.0.0.1:9000:9000"
+      - "127.0.0.1:9001:9001"
+    volumes:
+      - minio-data:/data
+
+volumes:
+  minio-data:

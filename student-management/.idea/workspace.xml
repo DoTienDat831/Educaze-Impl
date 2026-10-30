@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4a7148de-4666-49bb-9137-e466eb7e603c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/config/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/controller/ClassController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/controller/SubjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/dao/ClassDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/dao/ClassDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/dao/SubjectDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/dao/SubjectDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/entity/Class.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/entity/Subject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/service/classeservice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/service/SubjectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HTML/basic.css" beforeDir="false" afterPath="$PROJECT_DIR$/../HTML/basic.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HTML/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/../HTML/basic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Student.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Student.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/student-management.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/student-management.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/StudentManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/StudentManagementApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/config/CorsConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/controller/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/controller/DepartmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/controller/ClassController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/controller/SubjectController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/dao/DepartmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/dao/DepartmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/dao/DepartmentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/dao/DepartmentDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/dao/ClassDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/dao/ClassDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/dao/StudentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/dao/StudentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/dao/StudentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/dao/StudentDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/dao/SubjectDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/dao/SubjectDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/entity/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/entity/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/entity/Class.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/entity/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/entity/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/entity/Subject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/service/DepartmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/service/DepartmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/service/DepartmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/service/DepartmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/service/classeservice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/java/com/example/student_management/service/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/java/com/example/student_management/service/SubjectService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-management/src/test/java/com/example/student_management/StudentManagementApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/student-management/src/test/java/com/example/student_management/StudentManagementApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3JtzdAFbmQ25kTBtNbxRwlzif4X" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.StudentManagementApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/DoDat/Documents/Student management/student-management",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.jshint": "",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.example.student_management.service" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a7148de-4666-49bb-9137-e466eb7e603c" name="Changes" comment="" />
+      <created>1790495236817</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1790495236817</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.hibernate.HibernateException" package="org.hibernate" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

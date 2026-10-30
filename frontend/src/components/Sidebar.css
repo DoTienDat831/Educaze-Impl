@@ -1,0 +1,140 @@
+:root {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #1b2740;
+    background: #f5f7fb;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+body { min-width: 360px; min-height: 100vh; margin: 0;}
+.app-shell { min-height: 100vh; }
+
+
+.sidebar {
+    user-select: none;
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 2;
+    display: flex;
+    width: 282px;
+    flex-direction: column;
+    padding: 27px 18px 18px;
+    color: #aab6cd;
+    background: #111b31;
+    transition: width .2s ease;
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 31px;
+    right: -14px;
+    z-index: 3;
+    display: grid;
+    width: 29px;
+    height: 29px;
+    place-items: center;
+    border: 1px solid #dce3ee;
+    border-radius: 9px;
+    color: #465571;
+    background: #fff;
+    box-shadow: 0 2px 8px #14213a1f;
+    cursor: pointer;
+}
+
+.sidebar-toggle:hover { color: #14223c; background: #f2f6fa; }
+.sidebar.is-collapsed { width: 76px; align-items: center; padding-inline: 9px; }
+.sidebar.is-collapsed .sidebar-brand { margin: 0 0 42px; }
+.sidebar.is-collapsed .brand-copy,
+.sidebar.is-collapsed .sidebar-section-label,
+.sidebar.is-collapsed .sidebar-link > span:not(.nav-icon),
+.sidebar.is-collapsed .profile-copy,
+.sidebar.is-collapsed .profile-menu { display: none; }
+.sidebar.is-collapsed .sidebar-nav,
+.sidebar.is-collapsed .sidebar-bottom { width: 100%; }
+.sidebar.is-collapsed .sidebar-link { width: 52px; justify-content: center; padding: 0; }
+.sidebar.is-collapsed .profile-card { justify-content: center; padding-inline: 0; }
+.app-main { transition: margin-left .2s ease; }
+.app-shell.is-collapsed .app-main { margin-left: 76px; }
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 8px 42px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.brand-mark {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border-radius: 12px;
+    color: #10213c;
+    background: #a9e6cf;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.brand-copy, .profile-copy { display: flex; min-width: 0; flex-direction: column; }
+.brand-copy strong { font-size: 16px; letter-spacing: .2px; }
+.brand-copy small { margin-top: 3px; color: #8190aa; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; }
+.sidebar-section-label { margin: 0 12px 12px; color: #6f7e98; font-size: 10px; font-weight: 700; letter-spacing: 1.3px; }
+
+.sidebar-nav { 
+    display: flex;
+    flex-direction: column;
+    gap: 5px; 
+}
+
+.sidebar-link {
+    display: flex;
+    min-height: 45px;
+    align-items: center;
+    gap: 13px;
+    padding: 0 12px;
+    border-radius: 10px;
+    color: #aab6cd;
+    font-size: 13px;
+    font-weight: 550;
+    text-decoration: none;
+    transition: color .15s ease, background .15s ease;
+    justify-content: flex-start;
+}
+
+.sidebar-link:hover { color: #fff; background: #1a2943; }
+.sidebar-link.active { color: #eafff6; background: #203d48}
+.nav-icon { display: grid; width: 20px; place-items: center; color: #8b9bb7; font-size: 18px; }
+.active .nav-icon { color: #9be8c7; }
+.nav-count { margin-left: auto; color: #a2e3c7; font-size: 10px; font-weight: 700; }
+.sidebar-bottom { margin-top: auto; }
+.sidebar-divider { height: 1px; margin: 0 4px 13px; background: #28344b; }
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 17px;
+    padding: 13px 9px 3px;
+    border-top: 1px solid #28344b;
+}
+
+
+
+.profile-avatar { display: grid; width: 34px; height: 34px; flex: 0 0 auto; place-items: center; border-radius: 50%; color: #17233b; background: #f0c9a8; font-size: 10px; font-weight: 800; }
+.profile-copy strong { overflow: hidden; color: #edf2fb; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.profile-copy small { margin-top: 4px; color: #8593aa; font-size: 10px; }
+.profile-menu { margin-left: auto; color: #8b9bb7; font-size: 18px; }
+.app-main { min-height: 100vh; margin-left: 252px; padding: 38px clamp(22px, 4vw, 58px); }
+
+@media (max-width: 760px) {
+    .sidebar { width: 76px; align-items: center; padding: 20px 9px 14px; }
+    .sidebar-brand { margin: 0 0 34px; }
+    .brand-copy, .sidebar-section-label, .sidebar-link > span:not(.nav-icon), .profile-copy, .profile-menu { display: none; }
+    .sidebar-link { width: 52px; justify-content: center; padding: 0; }
+    .sidebar-bottom, .sidebar-nav { width: 100%; }
+    .profile-card { justify-content: center; padding-inline: 0; }
+    .app-main { margin-left: 76px; padding: 24px 16px; }
+}

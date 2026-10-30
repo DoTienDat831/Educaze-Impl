@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Interface</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <div class="sidebar">
+
+        <div class="sidebar-head">
+            <div class="sidebar-head-left">
+                <div class="sidebar-head-title">Quản lý trường học</div>
+                <div class="sidebar-head-sub">Trường Đại học Việt Nhật</div>
+            </div>
+            <div class="sidebar-head-right">
+                <i class="expand-collapse" data-lucide="panel-right"></i>
+            </div>
+        </div>
+
+        <div class="sidebar-search-box">
+            <i class="search-icon" data-lucide="search"></i>
+            <input class="search-input" placeholder="Search ...">
+        </div>
+
+        <div class="sidebar-menu-container">
+            <div class="overall">
+                <i class="overall-icon" data-lucide="layout-dashboard"></i>
+                <span>Tổng quan</span>
+            </div>
+
+            <div class="management">
+                <span>Quản lý</span>
+                <nav class="management-menu">
+                    <div class="menu-nav">
+                        <i class="menu-nav-icon" data-lucide="package"></i>
+                        <a href="#">Quản lý niên khóa</a>
+                    </div>
+                    <div class="menu-nav">
+                        <i class="menu-nav-icon" data-lucide="user"></i>
+                        <a href="#">Quản lý sinh viên</a>
+                    </div>
+                    <div class="menu-nav">
+                        <i class="menu-nav-icon" data-lucide="library-big"></i>
+                        <a href="#">Quản lý giảng viên</a>
+                    </div>
+                    <div class="menu-nav">
+                        <i class="menu-nav-icon" data-lucide="table"></i>
+                        <a href="#">Quản lý khoa</a>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="management">
+                <span>Báo cáo</span>
+                <nav class="management-menu">
+                    <div class="menu-nav">
+                        <i class="menu-nav-icon" data-lucide="scroll-text"></i>
+                        <a href="#">Báo cáo hàng tuần</a>
+                    </div>
+                    <div class="menu-nav">
+                        <i class="menu-nav-icon" data-lucide="file-spreadsheet"></i>
+                        <a href="#">Báo cáo sinh viên</a>
+                    </div>
+                    <div class="menu-nav">
+                        <i class="menu-nav-icon" data-lucide="table"></i>
+                        <a href="#">Báo cáo giảng viên</a>
+                    </div>
+                    <div class="menu-nav">
+                        <i class="menu-nav-icon" data-lucide="bug"></i>
+                        <a href="#">Báo cáo lỗi</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+
+        <div class="sidebar-bottom">
+            <div class="bottom-divider"></div>
+        </div>
+    </div>
+
+    <div class="main">
+
+        <div class="components top">
+            <div class="message">
+                <i class="message" data-lucide="message-square"></i>
+            </div>
+            <div class="notification">
+                <i class="notification" data-lucide="bell"></i>
+            </div>
+
+            <div class="profile">
+                <i class="profile" data-lucide="user"></i>
+                <span class="profile">Profile</span>
+            </div>
+        </div>
+
+
+        <div class="components table">
+
+            <div class="table-1">
+                <span class="QL"> Quản lý Sinh viên</span>
+                    <button class="table-1-btn">
+                        <i class="add-icon" data-lucide="plus"></i> Thêm mới
+                    </button>
+
+                <button class="table-1-btn">
+                    <i class="add-icon" data-lucide="download"></i>
+                    Xuất file
+                </button>
+            </div>
+
+            <div class="table-2">
+                <div class="search-box">
+                    <i class="search-icon" data-lucide="search"></i>
+                    <input class="search-input" placeholder="Search ...">
+                </div>
+                <button class="search-btn">Tìm kiếm</button>
+            </div>
+
+            <!--
+            <div class="table-3">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Họ Tên</th>
+                            <th>Ngày sinh</th>
+                            <th>Khoa</th>
+                            <th>Thao tác</th>
+                            <th>Chú thích</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Nguyễn Văn An</td>
+                            <td>12/03/2005</td>
+                            <td>Công nghệ thông tin</td>
+                            <td>
+                                <button>Sửa</button>
+                                <button>Xóa</button>
+                            </td>
+                            <td>Đang học</td>
+                        </tr>
+                    </tbody> 
+                </table>
+            </div>
+            -->
+            
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,165 @@
+/* Sidebar */
+.sidebar {
+    height: 100%;
+    padding: 22px;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    user-select: none;
+}
+
+/*Sidebar Head*/
+.sidebar-head {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    gap: 5px;
+    width: 300px;
+    height: 100px;
+    background-color: white;
+}
+
+.sidebar-head-left {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    background-color: white;
+}
+
+.sidebar-head-title {
+    font-size: 30px;
+    font-family: "inter";
+    font-weight: bold;
+    background-color: white;
+}
+
+.sidebar-head-sub {
+    font-size: 15px;
+    font-family: "inter";
+    font-weight: 500;
+    background-color: white;
+}
+
+.sidebar-head-right {
+    margin-top: 07px;
+    margin-left: 20px;
+    background-color: white;
+}
+
+.expand-collapse {
+    background-color: white;
+    cursor: pointer;
+    stroke-width: 2px;
+}
+
+/*Search box*/
+.sidebar-search-box {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    align-items: center;
+    width: 270px;
+    height: 40px;
+    background-color: transparent;
+    border: 2px solid black;
+    margin-top: -10px;
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.search-icon {
+    background-color: white;
+}
+
+.search-input {
+    margin-left: -20px;
+    border: none;
+    background-color: white;
+    font-family: "JetBrains Mono";
+}
+
+/*Menu*/
+.sidebar-menu-container {
+    margin-top: 10px;
+    margin-left: 20px;
+    background-color: white;
+}
+
+.overall {
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 10% 90%;
+    align-items: center;
+    background-color: white;
+}
+
+.overall-icon {
+    width: 24px;
+    height: 24px;
+    background-color: white;
+}
+
+.overall span {
+    font-family: "Roboto Mono";
+    margin-left: 10px;
+    background-color: white;
+    font-size: 18px;
+}
+
+.management {
+    background-color: white;
+}
+
+.management-menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    background-color: white;
+}
+
+.management span {
+    background-color: white;
+    font-family: "Roboto Mono";
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.menu-nav {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    width: 300px;
+    height: 35px;
+    align-items: center;
+    background-color: white;
+}
+
+.menu-nav a {
+    background-color: white;
+    font-family: "Roboto Mono";
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-nav-icon {
+    background-color: white;
+}
+
+.sidebar-divider {
+    height: 20px;
+    width: 20px;
+    background-color: white;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    background-color: white;
+}
+
+.bottom-divider {
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 10px;
+}
