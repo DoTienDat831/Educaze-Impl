@@ -9,4 +9,5 @@ public interface DepartmentDAO {
     Department save(Department department);
     Department update(Department department);
     void deleteById(Long id);
+    boolean isReferenced(Long id);
 }

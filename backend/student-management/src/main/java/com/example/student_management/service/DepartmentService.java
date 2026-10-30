@@ -1,16 +1,19 @@
 package com.example.student_management.service;
 
-import com.example.student_management.entity.Department;
+import com.example.student_management.dto.DepartmentRequest;
+import com.example.student_management.dto.DepartmentResponse;
 
 import java.util.List;
 
 public interface DepartmentService {
 
-    List<Department> findAll();
+    List<DepartmentResponse> findAll();
 
-    Department findById(Long id);
+    DepartmentResponse findById(Long id);
 
-    Department save(Department department);
+    DepartmentResponse create(DepartmentRequest request);
+
+    DepartmentResponse update(Long id, DepartmentRequest request);
 
     void deleteById(Long id);
 }

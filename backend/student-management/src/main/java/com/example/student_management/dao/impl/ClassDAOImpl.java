@@ -17,4 +17,8 @@ public class ClassDAOImpl implements ClassDAO {
     @Override public List<Class> findAll() { return entityManager.createQuery("SELECT c FROM Class c", Class.class).getResultList(); }
     @Override public void update(Class studentClass) { entityManager.merge(studentClass); }
     @Override public void delete(Long id) { Class classEntity = entityManager.find(Class.class, id); if (classEntity != null) entityManager.remove(classEntity); }
+    @Override public boolean hasStudents(Long id) {
+        return entityManager.createQuery("SELECT COUNT(s) FROM Student s WHERE s.studentClass.id = :id", Long.class)
+                .setParameter("id", id).getSingleResult() > 0;
+    }
 }

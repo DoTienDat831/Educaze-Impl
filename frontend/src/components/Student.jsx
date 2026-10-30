@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Bell, Mail, X, Pencil, Trash2, Search } from "lucide-react";
 
-function StudentFields({ form, departments, onChange }) {
+function StudentFields({ form, departments, classes, onChange }) {
+    const availableClasses = classes.filter(
+        (studentClass) => String(studentClass.department?.id) === String(form.departmentId)
+    );
     return (
         <>
             <input
@@ -56,6 +59,17 @@ function StudentFields({ form, departments, onChange }) {
                     </option>
                 ))}
             </select>
+            <select
+                name="classId"
+                value={form.classId || ""}
+                onChange={onChange}
+                disabled={!form.departmentId || availableClasses.length === 0}
+            >
+                <option value="">-- No Class --</option>
+                {availableClasses.map((studentClass) => (
+                    <option key={studentClass.id} value={studentClass.id}>{studentClass.name}</option>
+                ))}
+            </select>
         </>
     );
 }
@@ -63,6 +77,7 @@ function StudentFields({ form, departments, onChange }) {
 export default function Student({
     students,
     departments,
+    classes,
     departmentError,
     addForm,
     editForm,
@@ -100,7 +115,8 @@ export default function Student({
                 { header: "Gender", key: "gender", width: 12 },
                 { header: "Enrollment date", key: "enrollmentTime", width: 18 },
                 { header: "Email", key: "email", width: 30 },
-                { header: "Department", key: "department", width: 24 }
+                { header: "Department", key: "department", width: 24 },
+                { header: "Class", key: "class", width: 20 }
             ];
             
             worksheet.addRows(students.map((student) => ({
@@ -111,7 +127,8 @@ export default function Student({
                 gender: student.gender || "",
                 enrollmentTime: student.enrollmentTime || "",
                 email: student.email || "",
-                department: student.department?.departmentName || student.studentClass?.department?.departmentName || ""
+                department: student.department?.departmentName || "",
+                class: student.studentClass?.name || ""
             })));
 
             worksheet.getRow(1).font = { bold: true, color: { argb: "FF1B2740" } };
@@ -120,7 +137,7 @@ export default function Student({
                 pattern: "solid",
                 fgColor: { argb: "FFE5F7EF" }
             };
-            worksheet.autoFilter = { from: "A1", to: "H1" };
+            worksheet.autoFilter = { from: "A1", to: "I1" };
             worksheet.views = [{ state: "frozen", ySplit: 1 }];
 
             const buffer = await workbook.xlsx.writeBuffer();
@@ -153,7 +170,7 @@ export default function Student({
                 <h2 id="add-student-heading">Add student</h2>
                 {departmentError && <p className="form-error" role="alert">{departmentError}</p>}
                 <form onSubmit={handleAddSubmit} className="student-form add-student-form">
-                    <StudentFields form={addForm} departments={departments} onChange={handleAddChange} />
+                    <StudentFields form={addForm} departments={departments} classes={classes} onChange={handleAddChange} />
                     <button type="submit" className="add-btn">Add student</button>
                 </form>
                 {addError && <p className="form-error" role="alert">{addError}</p>}
@@ -166,17 +183,17 @@ export default function Student({
                             <h2 id="edit-student-heading">Update student</h2>
                             <p>{editingStudent?.studentCode || `Student #${editingId}`}</p>
                         </div>
-                        {canExport && <button
+                        <button
                             type="button"
                             className="cancel-edit-icon"
                             aria-label="Close update form"
                             onClick={handleCancelEdit}
                         >
                             <X size={18} />
-                        </button>}
+                        </button>
                     </div>
                     <form onSubmit={handleUpdateSubmit} className="student-form edit-student-form">
-                        <StudentFields form={editForm} departments={departments} onChange={handleEditChange} />
+                        <StudentFields form={editForm} departments={departments} classes={classes} onChange={handleEditChange} />
                         <div className="edit-form-actions">
                             <button type="submit" className="update-btn">Save changes</button>
                             <button type="button" className="cancel-edit-btn" onClick={handleCancelEdit}>Cancel</button>
@@ -205,7 +222,7 @@ export default function Student({
                                 aria-label="Search by ID or student code"
                             />
                         </label>
-                        <button
+                        {canExport && <button
                             className="student-export-button"
                             type="button"
                             onClick={handleExport}
@@ -214,7 +231,7 @@ export default function Student({
                         >
                             <span aria-hidden="true">↓</span>
                             Export XLSX
-                        </button>
+                        </button>}
                     </div>
                 </div>
                 {exportError && <p className="student-export-error" role="alert">{exportError}</p>}
@@ -229,12 +246,13 @@ export default function Student({
                                 <th>Enrollment</th>
                                 <th>Email</th>
                                 <th>Department</th>
+                                <th>Class</th>
                                 {canManage && <th>Actions</th>}
                             </tr>
                         </thead>
                         <tbody>
                             {students.length === 0 ? (
-                                <tr><td colSpan={canManage ? "8" : "7"} className="student-empty">No students found.</td></tr>
+                                <tr><td colSpan={canManage ? "9" : "8"} className="student-empty">No students found.</td></tr>
                             ) : students.map((student) => (
                                 <tr key={student.id}>
                                     <td><span className="student-code">{student.studentCode}</span></td>
@@ -244,6 +262,7 @@ export default function Student({
                                     <td>{student.enrollmentTime || "—"}</td>
                                     <td>{student.email || "—"}</td>
                                     <td>{student.department?.departmentName || student.studentClass?.department?.departmentName || "—"}</td>
+                                    <td>{student.studentClass?.name || "—"}</td>
                                     {canManage && <td>
                                         <div className="student-row-actions">
                                             <button type="button" onClick={() => handleEdit(student)} aria-label={`Edit ${student.name}`} title="Edit"><Pencil size={15} /></button>

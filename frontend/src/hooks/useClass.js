@@ -86,7 +86,7 @@ function useClass() {
         setError("");
         const payload = {
             name: form.name.trim(),
-            department: form.departmentId ? { id: Number(form.departmentId) } : null
+            departmentId: Number(form.departmentId)
         };
 
         try {

@@ -9,4 +9,5 @@ public interface ClassDAO {
     List<Class> findAll();
     void update(Class studentClass);
     void delete(Long id);
+    boolean hasStudents(Long id);
 }

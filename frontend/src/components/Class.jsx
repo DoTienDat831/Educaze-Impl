@@ -60,7 +60,7 @@ function ClassPage({ canManage = false }) {
                             <input name="name" value={form.name} onChange={handleChange} required maxLength={150} placeholder="Class name"/>
                         </label>
                         <label>
-                            <select name="departmentId" value={form.departmentId} onChange={handleChange}>
+                            <select name="departmentId" value={form.departmentId} onChange={handleChange} required>
                                 <option value="">Department</option>
                                 {departments.map((department) => (
                                     <option key={department.id} value={department.id}>

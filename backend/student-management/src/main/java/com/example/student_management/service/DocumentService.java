@@ -3,6 +3,7 @@ package com.example.student_management.service;
 import com.example.student_management.dao.DocumentDAO;
 import com.example.student_management.dto.DocumentResponse;
 import com.example.student_management.entity.Document;
+import com.example.student_management.mapper.DocumentMapper;
 import io.minio.GetObjectArgs;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
@@ -33,15 +34,17 @@ public class DocumentService {
     private final MinioClient minioClient;
     private final DocumentDAO documentDAO;
     private final DocumentFileValidator fileValidator;
+    private final DocumentMapper documentMapper;
 
     @Value("${app.minio.bucket}")
     private String bucket;
 
     public DocumentService(MinioClient minioClient, DocumentDAO documentDAO,
-                           DocumentFileValidator fileValidator) {
+                           DocumentFileValidator fileValidator, DocumentMapper documentMapper) {
         this.minioClient = minioClient;
         this.documentDAO = documentDAO;
         this.fileValidator = fileValidator;
+        this.documentMapper = documentMapper;
     }
 
     @Transactional
@@ -63,7 +66,7 @@ public class DocumentService {
             document.setObjectKey(objectKey);
             document.setContentType(contentType);
             document.setSize(file.getSize());
-            return DocumentResponse.from(documentDAO.save(document));
+            return documentMapper.toResponse(documentDAO.save(document));
         } catch (Exception exception) {
             // If metadata persistence fails after the object upload, compensate by removing it.
             try {
@@ -80,7 +83,7 @@ public class DocumentService {
 
     @Transactional(readOnly = true)
     public List<DocumentResponse> findAll() {
-        return documentDAO.findAllActive().stream().map(DocumentResponse::from).toList();
+        return documentDAO.findAllActive().stream().map(documentMapper::toResponse).toList();
     }
 
     @Transactional(readOnly = true)

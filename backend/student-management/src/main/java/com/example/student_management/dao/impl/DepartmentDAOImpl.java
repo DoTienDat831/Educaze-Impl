@@ -30,12 +30,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Override
     public Department save(Department department) {
-        if (department.getId() == null) {
-            entityManager.persist(department);
-        } else {
-            entityManager.merge(department);
-        }
-
+        entityManager.persist(department);
         return department;
     }
 
@@ -49,15 +44,18 @@ public class DepartmentDAOImpl implements DepartmentDAO {
         Department department = entityManager.find(Department.class, id);
 
         if (department != null) {
-            // Class.department is the owning side of the relationship and
-            // Class.department_id references this row. Keep classes and students
-            // intact by removing that association first.
-            entityManager.createQuery(
-                    "UPDATE Class m SET m.department = null WHERE m.department.id = :departmentId")
-                    .setParameter("departmentId", id)
-                    .executeUpdate();
-
             entityManager.remove(department);
         }
+    }
+
+    @Override
+    public boolean isReferenced(Long id) {
+        Long classCount = entityManager.createQuery(
+                        "SELECT COUNT(c) FROM Class c WHERE c.department.id = :id", Long.class)
+                .setParameter("id", id).getSingleResult();
+        Long studentCount = entityManager.createQuery(
+                        "SELECT COUNT(s) FROM Student s WHERE s.department.id = :id", Long.class)
+                .setParameter("id", id).getSingleResult();
+        return classCount > 0 || studentCount > 0;
     }
 }

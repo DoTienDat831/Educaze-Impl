@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import studentApi from "../api/studentApi";
 import departmentApi from "../api/departmentApi";
+import classApi from "../api/classApi";
 
 const empty = {
     name: "",
@@ -8,7 +9,8 @@ const empty = {
     gender: "",
     enrollmentTime: "",
     email:"",
-    departmentId: ""
+    departmentId: "",
+    classId: ""
 };
 
 function useStudents() {
@@ -21,6 +23,7 @@ function useStudents() {
     const [addError, setAddError] = useState("");
     const [editError, setEditError] = useState("");
     const [departments, setDepartments] = useState([]);
+    const [classes, setClasses] = useState([]);
     const [departmentError, setDepartmentError] = useState("");
 
     // Lấy danh sách student từ backend
@@ -40,8 +43,12 @@ function useStudents() {
     const loadDepartments = useCallback(async () => {
         setDepartmentError("");
         try {
-            const { data } = await departmentApi.getAll();
-            setDepartments(Array.isArray(data) ? data : []);
+            const [departmentResult, classResult] = await Promise.all([
+                departmentApi.getAll(),
+                classApi.getAll()
+            ]);
+            setDepartments(Array.isArray(departmentResult.data) ? departmentResult.data : []);
+            setClasses(Array.isArray(classResult.data) ? classResult.data : []);
         } catch (err) {
             setDepartmentError(
                 err.response?.data?.message || "Không thể tải danh sách department."
@@ -68,12 +75,20 @@ function useStudents() {
         gender: form.gender || null,
         enrollmentTime: form.enrollmentTime || null,
         email: form.email,
-        department: { id: Number(form.departmentId) }
+        departmentId: Number(form.departmentId),
+        classId: form.classId ? Number(form.classId) : null
     });
 
-    // Luồng tạo mới độc lập với luồng cập nhật.
-    const handleAddChange = (e) => updateForm(addForm, setAddForm, e);
-    const handleEditChange = (e) => updateForm(editForm, setEditForm, e);
+    const handleFormChange = (form, setForm, event) => {
+        if (event.target.name === "departmentId") {
+            setForm({ ...form, departmentId: event.target.value, classId: "" });
+            return;
+        }
+        updateForm(form, setForm, event);
+    };
+
+    const handleAddChange = (e) => handleFormChange(addForm, setAddForm, e);
+    const handleEditChange = (e) => handleFormChange(editForm, setEditForm, e);
 
     const handleAddSubmit = async (e) => {
         e.preventDefault();
@@ -98,11 +113,8 @@ function useStudents() {
             gender: student.gender || "",
             enrollmentTime: student.enrollmentTime || "",
             email: student.email || "",
-            departmentId: student.department?.id
-                ? String(student.department.id)
-                : student.studentClass?.department?.id
-                    ? String(student.studentClass.department.id)
-                    : ""
+            departmentId: student.department?.id ? String(student.department.id) : "",
+            classId: student.studentClass?.id ? String(student.studentClass.id) : ""
         });
 
         setEditingId(student.id);
@@ -159,6 +171,7 @@ function useStudents() {
     return {
         students: filteredStudents,
         departments,
+        classes,
         departmentError,
         loadDepartments,
         addForm,
