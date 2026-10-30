@@ -2,7 +2,7 @@ import { Building2, CirclePlus, Pencil, Search, Trash2, X, Bell, Mail } from "lu
 import useDepartments from "../hooks/useDepartments";
 import "./Department.css";
 
-function Department() {
+function Department({ canManage = false }) {
     const {
         departments,
         visibleDepartments,
@@ -29,10 +29,10 @@ function Department() {
                 <div>
                     <h1>Departments</h1>
                 </div>
-                <button className="department-primary-button" type="button" onClick={openCreateForm}>
+                {canManage && <button className="department-primary-button" type="button" onClick={openCreateForm}>
                     <CirclePlus size={17} />
                     <span>Add department</span>
-                </button>
+                </button>}
             </header>
 
             <section className="department-summary-card">
@@ -43,7 +43,7 @@ function Department() {
                 </div>
             </section>
 
-            {isFormOpen && (
+            {canManage && isFormOpen && (
                 <section className="department-form-card" aria-labelledby="department-form-title">
 
                     <div className="department-form-heading">
@@ -100,19 +100,19 @@ function Department() {
                 <div className="department-table-wrap">
                     <table className="department-table">
                         <thead>
-                            <tr><th>Code</th><th>Department</th><th>Tuition fee</th><th>Actions</th></tr>
+                            <tr><th>Code</th><th>Department</th><th>Tuition fee</th>{canManage && <th>Actions</th>}</tr>
                         </thead>
                         <tbody>
                             {loading ? (
-                                <tr><td colSpan="4" className="department-empty">Loading departments…</td></tr>
+                                <tr><td colSpan={canManage ? "4" : "3"} className="department-empty">Loading departments…</td></tr>
                             ) : visibleDepartments.length === 0 ? (
-                                <tr><td colSpan="4" className="department-empty">No departments found.</td></tr>
+                                <tr><td colSpan={canManage ? "4" : "3"} className="department-empty">No departments found.</td></tr>
                             ) : visibleDepartments.map((department) => (
                                 <tr key={department.id}>
                                     <td><span className="department-code">{department.departmentCode}</span></td>
                                     <td className="department-name-cell">{department.departmentName}</td>
                                     <td>{formatTuition(department.tuitionFee)}</td>
-                                    <td>
+                                    {canManage && <td>
                                         <div className="department-row-actions">
                                             <button type="button" onClick={() => openEditForm(department)} aria-label={`Edit ${department.departmentName}`} title="Edit">
                                                 <Pencil size={15} />
@@ -121,7 +121,7 @@ function Department() {
                                                 <Trash2 size={15} />
                                             </button>
                                         </div>
-                                    </td>
+                                    </td>}
                                 </tr>
                             ))}
                         </tbody>

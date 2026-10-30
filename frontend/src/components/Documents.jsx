@@ -29,7 +29,7 @@ function getErrorMessage(error) {
     return error?.message || "Không thể kết nối đến máy chủ.";
 }
 
-function Documents() {
+function Documents({ canUpload = false, canDelete = false }) {
     const [documents, setDocuments] = useState([]);
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true);
@@ -170,18 +170,18 @@ function Documents() {
                     <h1>Documents</h1>
                     <p className="documents-subtitle">Lưu trữ và quản lý tài liệu của trường.</p>
                 </div>
-                <button className="documents-upload-button" type="button" onClick={() => fileInputRef.current?.click()} disabled={uploading}>
+                {canUpload && <button className="documents-upload-button" type="button" onClick={() => fileInputRef.current?.click()} disabled={uploading}>
                     <UploadCloud size={17} />
                     {uploading ? "Đang tải lên…" : "Tải tài liệu lên"}
-                </button>
-                <input
+                </button>}
+                {canUpload && <input
                     ref={fileInputRef}
                     className="documents-file-input"
                     type="file"
                     accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.txt"
                     onChange={handleFileChange}
                     aria-label="Chọn tài liệu để tải lên"
-                />
+                />}
             </header>
 
             <section className="documents-overview" aria-label="Tóm tắt kho tài liệu">
@@ -191,7 +191,7 @@ function Documents() {
                 <div><span>Tổng dung lượng</span><strong>{formatSize(totalBytes)}</strong></div>
             </section>
 
-            <section
+            {canUpload && <section
                 className={`documents-dropzone${isDragging ? " is-dragging" : ""}`}
                 aria-label="Khu vực tải tài liệu lên"
                 onDragEnter={(event) => { event.preventDefault(); setIsDragging(true); }}
@@ -209,7 +209,7 @@ function Documents() {
                 <button type="button" onClick={() => fileInputRef.current?.click()} disabled={uploading}>
                     {uploading ? "Đang tải lên…" : "Chọn tệp"}
                 </button>
-            </section>
+            </section>}
 
             {error && <p className="documents-message is-error" role="alert">{error}</p>}
             {notice && <p className="documents-message is-success" role="status">{notice}</p>}
@@ -244,7 +244,7 @@ function Documents() {
                                     <td>{formatSize(item.size)}</td>
                                     <td><div className="documents-actions">
                                         <button type="button" onClick={() => handleDownload(item)} disabled={busyId === item.id} title="Tải xuống" aria-label={`Tải xuống ${getDocumentName(item)}`}><Download size={16} /></button>
-                                        <button className="is-delete" type="button" onClick={() => handleDelete(item)} disabled={busyId === item.id} title="Xóa" aria-label={`Xóa ${getDocumentName(item)}`}><Trash2 size={16} /></button>
+                                        {canDelete && <button className="is-delete" type="button" onClick={() => handleDelete(item)} disabled={busyId === item.id} title="Xóa" aria-label={`Xóa ${getDocumentName(item)}`}><Trash2 size={16} /></button>}
                                     </div></td>
                                 </tr>
                             ))}

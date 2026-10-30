@@ -7,11 +7,13 @@ import {
     PanelLeftClose,
     PanelLeftOpen,
     GraduationCap,
-    Files
+    Files,
+    LogOut
 
 } from "lucide-react";
 
-function Sidebar({ collapsed, onToggle, activePage, onNavigate }) {
+function Sidebar({ collapsed, onToggle, activePage, onNavigate, role, username, onLogout }) {
+    const roleLabel = role === "ADMIN" ? "Administrator" : role === "TEACHER" ? "Teacher" : "Student";
     return (
         <aside className={`sidebar${collapsed ? " is-collapsed" : ""}`} aria-label="Main navigation">
             {/* Brand */}
@@ -24,7 +26,7 @@ function Sidebar({ collapsed, onToggle, activePage, onNavigate }) {
 
                 <span className="brand-copy">
                     <strong>Educaze</strong>
-                    <small>ADMIN PORTAL</small>
+                    <small>{roleLabel.toUpperCase()} PORTAL</small>
                 </span>
             </a>
 
@@ -151,16 +153,12 @@ function Sidebar({ collapsed, onToggle, activePage, onNavigate }) {
                     </div>
 
                     <div className="profile-copy">
-                        <strong>Administrator</strong>
-                        <small>School manager</small>
+                    <strong>{username}</strong>
+                    <small>{roleLabel}</small>
                     </div>
-
-                    <span
-                        className="profile-menu"
-                        aria-hidden="true"
-                    >
-                        ···
-                    </span>
+                    <button className="profile-menu" type="button" onClick={onLogout} aria-label="Đăng xuất" title="Đăng xuất">
+                        <LogOut size={16} />
+                    </button>
                 </div>
             </div>
         </aside>

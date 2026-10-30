@@ -2,7 +2,7 @@ import { BookOpen, CirclePlus, Pencil, Search, Trash2, X } from "lucide-react";
 import useClass from "../hooks/useClass";
 import "./Class.css";
 
-function ClassPage() {
+function ClassPage({ canManage = false }) {
     const {
         classes,
         visibleClasses,
@@ -29,10 +29,10 @@ function ClassPage() {
                 <div>
                     <h1>Classes</h1>
                 </div>
-                <button className="class-primary-button" type="button" onClick={openCreateForm}>
+                {canManage && <button className="class-primary-button" type="button" onClick={openCreateForm}>
                     <CirclePlus size={17} />
                     <span>Add class</span>
-                </button>
+                </button>}
             </header>
 
             <section className="class-summary-card">
@@ -43,7 +43,7 @@ function ClassPage() {
                 </div>
             </section>
 
-            {isFormOpen && (
+            {canManage && isFormOpen && (
                 <section className="class-form-card" aria-labelledby="class-form-title">
                     <div className="class-form-heading">
                         <div>
@@ -102,19 +102,19 @@ function ClassPage() {
                 <div className="class-table-wrap">
                     <table className="class-table">
                         <thead>
-                            <tr><th>ID</th><th>Class</th><th>Department</th><th>Actions</th></tr>
+                            <tr><th>ID</th><th>Class</th><th>Department</th>{canManage && <th>Actions</th>}</tr>
                         </thead>
                         <tbody>
                             {loading ? (
-                                <tr><td colSpan="4" className="class-empty">Loading classes…</td></tr>
+                                <tr><td colSpan={canManage ? "4" : "3"} className="class-empty">Loading classes…</td></tr>
                             ) : visibleClasses.length === 0 ? (
-                                <tr><td colSpan="4" className="class-empty">No classes found.</td></tr>
+                                <tr><td colSpan={canManage ? "4" : "3"} className="class-empty">No classes found.</td></tr>
                             ) : visibleClasses.map((classEntry) => (
                                 <tr key={classEntry.id}>
                                     <td><span className="class-id">{classEntry.id}</span></td>
                                     <td className="class-name-cell">{classEntry.name}</td>
                                     <td>{classEntry.department?.departmentName || "No department"}</td>
-                                    <td>
+                                    {canManage && <td>
                                         <div className="class-row-actions">
                                             <button type="button" onClick={() => openEditForm(classEntry)} aria-label={`Edit ${classEntry.name}`} title="Edit">
                                                 <Pencil size={15} />
@@ -123,7 +123,7 @@ function ClassPage() {
                                                 <Trash2 size={15} />
                                             </button>
                                         </div>
-                                    </td>
+                                    </td>}
                                 </tr>
                             ))}
                         </tbody>

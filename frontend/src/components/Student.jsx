@@ -78,7 +78,9 @@ export default function Student({
     handleUpdateSubmit,
     handleEdit,
     handleCancelEdit,
-    handleDelete
+    handleDelete,
+    canManage = false,
+    canExport = false
 }) {
     const editingStudent = students.find((student) => student.id === editingId);
     const [exportError, setExportError] = useState("");
@@ -147,7 +149,7 @@ export default function Student({
                 <h1>Student Management</h1>
             </div>
 
-            <section className="student-form-section" aria-labelledby="add-student-heading">
+            {canManage && <section className="student-form-section" aria-labelledby="add-student-heading">
                 <h2 id="add-student-heading">Add student</h2>
                 {departmentError && <p className="form-error" role="alert">{departmentError}</p>}
                 <form onSubmit={handleAddSubmit} className="student-form add-student-form">
@@ -155,23 +157,23 @@ export default function Student({
                     <button type="submit" className="add-btn">Add student</button>
                 </form>
                 {addError && <p className="form-error" role="alert">{addError}</p>}
-            </section>
+            </section>}
 
-            {editingId != null && (
+            {canManage && editingId != null && (
                 <section className="student-form-section edit-student-section" aria-labelledby="edit-student-heading">
                     <div className="edit-student-heading-row">
                         <div>
                             <h2 id="edit-student-heading">Update student</h2>
                             <p>{editingStudent?.studentCode || `Student #${editingId}`}</p>
                         </div>
-                        <button
+                        {canExport && <button
                             type="button"
                             className="cancel-edit-icon"
                             aria-label="Close update form"
                             onClick={handleCancelEdit}
                         >
                             <X size={18} />
-                        </button>
+                        </button>}
                     </div>
                     <form onSubmit={handleUpdateSubmit} className="student-form edit-student-form">
                         <StudentFields form={editForm} departments={departments} onChange={handleEditChange} />
@@ -227,12 +229,12 @@ export default function Student({
                                 <th>Enrollment</th>
                                 <th>Email</th>
                                 <th>Department</th>
-                                <th>Actions</th>
+                                {canManage && <th>Actions</th>}
                             </tr>
                         </thead>
                         <tbody>
                             {students.length === 0 ? (
-                                <tr><td colSpan="8" className="student-empty">No students found.</td></tr>
+                                <tr><td colSpan={canManage ? "8" : "7"} className="student-empty">No students found.</td></tr>
                             ) : students.map((student) => (
                                 <tr key={student.id}>
                                     <td><span className="student-code">{student.studentCode}</span></td>
@@ -242,12 +244,12 @@ export default function Student({
                                     <td>{student.enrollmentTime || "—"}</td>
                                     <td>{student.email || "—"}</td>
                                     <td>{student.department?.departmentName || student.studentClass?.department?.departmentName || "—"}</td>
-                                    <td>
+                                    {canManage && <td>
                                         <div className="student-row-actions">
                                             <button type="button" onClick={() => handleEdit(student)} aria-label={`Edit ${student.name}`} title="Edit"><Pencil size={15} /></button>
                                             <button type="button" onClick={() => handleDelete(student.id)} aria-label={`Delete ${student.name}`} title="Delete"><Trash2 size={15} /></button>
                                         </div>
-                                    </td>
+                                    </td>}
                                 </tr>
                             ))}
                         </tbody>
