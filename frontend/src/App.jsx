@@ -5,6 +5,7 @@ import Department from "./components/Department";
 import ClassPage from "./components/Class";
 import Dashboard from "./components/Dashboard";
 import Documents from "./components/Documents";
+import AccountManagement from "./components/AccountManagement";
 import Login from "./components/Login";
 import { useEffect, useState } from "react";
 import "./App.css";
@@ -54,6 +55,8 @@ function Workspace({ session, onLogout }) {
                     <ClassPage canManage={isAdmin} />
                 ) : activePage === "documents" ? (
                     <Documents canUpload={canUploadDocuments} canDelete={isAdmin} />
+                ) : activePage === "accounts" && isAdmin ? (
+                    <AccountManagement />
                 ) : (
                     <Student className="student-management" {...studentData} canManage={isAdmin} canExport={isAdmin} />
                 )}

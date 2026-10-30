@@ -67,6 +67,10 @@ public class AuthService {
 
     @Transactional
     public UserResponse createUser(CreateUserRequest request) {
+        if (request.role() == AppRole.ADMIN) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Chỉ được tạo tài khoản TEACHER hoặc STUDENT qua chức năng này");
+        }
         if (users.existsByUsername(request.username())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Username đã tồn tại");
         }

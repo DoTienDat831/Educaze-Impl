@@ -8,7 +8,8 @@ import {
     PanelLeftOpen,
     GraduationCap,
     Files,
-    LogOut
+    LogOut,
+    UserPlus
 
 } from "lucide-react";
 
@@ -129,6 +130,19 @@ function Sidebar({ collapsed, onToggle, activePage, onNavigate, role, username, 
                     <span className="nav-icon" aria-hidden="true"><Files /></span>
                     <span>Documents</span>
                 </a>
+
+                {role === "ADMIN" && <a
+                    className={`sidebar-link${activePage === "accounts" ? " active" : ""}`}
+                    href="#accounts"
+                    aria-current={activePage === "accounts" ? "page" : undefined}
+                    onClick={(event) => {
+                        event.preventDefault();
+                        onNavigate("accounts");
+                    }}
+                >
+                    <span className="nav-icon" aria-hidden="true"><UserPlus /></span>
+                    <span>Create Account</span>
+                </a>}
 
             </nav>
 
